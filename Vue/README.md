@@ -8,7 +8,7 @@
 
 ## Vue CLI
 
-![Vue_CLI](Vue_CLI.png)
+![Vue_CLI](공유사진/Vue_CLI.PNG)
 
 > - 정의: Command Line Interface의 약자. 윈도우에서는 Command창, 맥에서는 터미널 창에서 타이핑으로 명령어를 입력해 원하는 작업을 실행시키는 도구를 뜻하는 단어. 내부적으로 Webpack을 활용.
 > - 응용: 빠르게 Vue pjt생성, vue.config.js를 설정하여 웹팩구성에 대해 오버라이딩하여 추가설정 가능
