@@ -11,11 +11,14 @@
 ## 현재 올라와 있는 README
 
 - JavaScript
-  - basix
+  - basic fin
   - im 제작중
 - React
   - voca 단어장 만들기로 실전형 README 제작중
 - Vue
-  - Vue CLI
+  - Vue CLI fin
   - Vue Grammer 예정
   - Vuex 예정
+- CS
+  - base fin
+
