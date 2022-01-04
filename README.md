@@ -10,15 +10,20 @@
 
 ## 현재 올라와 있는 README
 
+- python
+  - python 문법 예정
+  - django 예정
 - JavaScript
-  - basic fin
+  - basic 완
   - im 제작중
+
 - React
-  - voca 단어장 만들기로 실전형 README 제작중
+  - voca 단어장 PJT 실전형 README 진행중
 - Vue
-  - Vue CLI fin
-  - Vue Grammer 예정
+  - Vue 진행중
+  - Vue CLI 완
+  - Vue Router 예정
   - Vuex 예정
 - CS
-  - base fin
-
+  - base 완
+  - im 예정
