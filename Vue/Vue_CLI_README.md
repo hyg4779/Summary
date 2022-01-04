@@ -8,7 +8,7 @@
 
 ## Vue CLI
 
-![Vue_CLI](공유사진/Vue_CLI.PNG)
+![Vue_CLI](Vue_CLI_README_사진/Vue_CLI.PNG)
 
 > - 정의: Command Line Interface의 약자. 윈도우에서는 Command창, 맥에서는 터미널 창에서 타이핑으로 명령어를 입력해 원하는 작업을 실행시키는 도구를 뜻하는 단어. 내부적으로 Webpack을 활용.
 > - 응용: 빠르게 Vue pjt생성, vue.config.js를 설정하여 웹팩구성에 대해 오버라이딩하여 추가설정 가능
@@ -38,7 +38,7 @@
 
 2. Vue Manual Select features
 
-   ![Manually_select_features](공유사진/Manually_select_features.PNG)
+   ![Manually_select_features](Vue_CLI_README_사진/Manually_select_features.PNG)
 
    - ESLint + Prettier: 에러가 있는 코드에 표시를 해주는 옵션 + 사용자가 작성한 코드를 무시하고, 정해진 규칙에 따라 자동으로 코드 스타일을 정리해 주는 코드 포멧터
 
@@ -52,7 +52,7 @@
 
    - <Github_ID>.github.io 로 하면 모듈 추가 부분 생략가능
 
-   ![github_main](공유사진/github_main.PNG)
+   ![github_main](Vue_CLI_README_사진/github_main.PNG)
 
 2. Github Pages로 배포하기 위한 라이브러리 추가 
 
@@ -60,7 +60,7 @@
    yarn add gh-pages -D
    ```
 
-   ![yarn_add_gh-pages_-D](공유사진/yarn_add_gh-pages_-D.PNG)
+   ![yarn_add_gh-pages_-D](Vue_CLI_README_사진/yarn_add_gh-pages_-D.PNG)
 
 3. package.json에 homepage, script>predeploy, deploy, clean 부분 추가
 
@@ -87,11 +87,11 @@
 
 5. yarn deploy 명령어로 정적파일을 repo에 올림(branch: gh-pages)
 
-![yarn_deploy](공유사진/yarn_deploy.PNG)
+![yarn_deploy](Vue_CLI_README_사진/yarn_deploy.PNG)
 
 여기 까지 하면 배포는 성공!
 
-![publish_success](공유사진/publish_success.PNG)
+![publish_success](Vue_CLI_README_사진/publish_success.PNG)
 
 
 
@@ -119,13 +119,15 @@
 
 
 
-2. workflow 파일 수정 (deploy.yml)![workflow_produce](공유사진/workflow_produce.PNG)
+2. workflow 파일 수정 (deploy.yml)
 
+   ![workflow_produce](Vue_CLI_README_사진/workflow_produce.PNG)
+   
    - blank.yml => depoly.yml
    - name을 `Deployment` 로 수정
 
    > 폴더구조 최상단 `github`/`workflow`/`deploy.yml`
-
+   
    ``` yml
    jobs:
    
@@ -164,11 +166,11 @@
    
 
    **workflow 상태창**
-
-   ![workflow_success](공유사진/workflow_success.PNG)
-
-
-
-​	**배포성공화면**
-
-​	![publish_window](공유사진/publish_window.PNG)
+   
+   ![workflow_success](Vue_CLI_README_사진/workflow_success.PNG)
+   
+   
+   
+   **배포성공화면**
+   
+   ![publish_window](Vue_CLI_README_사진/publish_window.PNG)
