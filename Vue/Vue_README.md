@@ -51,7 +51,7 @@
 **CDN**
 
 ```html
-<script src="https://unpkg.com/vue@next"></script>
+<script src="https://cdn.jsdeliver.net/npm/vue/dist/vue.js"></script>
 ```
 
 **npm**
@@ -90,23 +90,22 @@ $ npm install vue@next
 ```js
 const app = new Vue({
     el:'#app',
-    data(){	// MVVM모델에서 M에 속하는 데이터들이 모인 공간
+    data(){	
         return{
-            msg: '지금 시간은' + new Date() + '입니다.', // JS문법을 같이 사용할 수 있음
-            seen: true,	// v-if 값의 참 거짓을 토글하여 렌더링이 유무를 구분지을 수 있음
-            todos:[	// js object에서 for문 사용시, :key를 설정해서 indexing 과 오류를 줄이자	
-                	// + for 반복문은 if 보다 우선순위가 높아 같아 사용하려면 if 문을 먼저 언급하고 사용해야함
+            msg: '지금 시간은' + new Date() + '입니다.', 
+            seen: true,
+            todos:[
                 text: 'Hi',
                 text: 'Hello',
                 text:  'Hey',
             ],
             Greeting: 'Hellow',
-            bindingData: '안녕 Vue!'	// input값이 변하면 bindingData도 같이 변하고 p태그의 bindingData도 같이 변한다
+            bindingData: '안녕 Vue!'
         }
     },
-    methods:{ // Vue 에서 사용하는 함수를 모아놓는 공간
+    methods:{
         reverseGreeting(){
-            this.Greeting = this.Greeting.split('').reverse().join('')	// 기존 onclick 메서드를 v-on: 또는 @로 사용할 수 있음 
+            this.Greeting = this.Greeting.split('').reverse().join('')
         }
     }
 })
@@ -165,22 +164,6 @@ const app = new Vue({
 > `data`는 함수형태로 작성한다. (컴포넌트 인스턴스에 데이터 객체를 반환하는 함수)
 >
 > `data`에서 브라우저의 API객체나 포로토타입 속성과 같이 자체적으로 상태동작을 가진 객체보다 단지, 컴포넌트 데이터를 나타내는 일반객체가 있는것이 좋음(상태동작 객체는 `Vuex`활용)
->
-> 
->
-> #### 작성방법
->
-> ``` js
-> const data {a:1}
-> 
-> const vm = vue.creatApp({
->     data(){
->         return data
->     }
-> }).mount('#app')
-> 
-> console.log(vm.a) // => 1
-> ```
 
 
 
@@ -192,36 +175,124 @@ const app = new Vue({
    <span>메세지: {{msg}}</span>
    ```
 
-   > - v-html
-   >
-   >   ``` html
-   >   <p>{{rawHtml}}</p>
-   >   <p><span v-html>{{rawHtml}}></span></p>
-   >   ```
-   >
-   >   `p태그` 안의 `span태그` 값은 `rawHtml`값으로 대체됨. 웹사이트의 임의의 HTML을 동적으로 렌더링 한다면 **XSS 취약점**으로 이어질 수 있으니 `v-html`은 사용을 자제하는 것이 좋다
-   >
-   >   **XSS 취약점 (Cross Site Scripting)**
-   >
-   >   사용자가 보는 웹페이지를 클라이언트 측에서 스크립트를 삽입 할 수 있다. `XSS`은 심각한 경우 공격자가 사이트의 데이터를 제어할 수 있어 심각한 보안 위험요소이다.
-
-2. v-bind
+2. 속성접근 Directive
 
    ``` html
    <div v-bind:id="dynaminId"></div>
    ```
 
-   > 바인딩 된 `data`의 값이 `Boolean` 값인 경우 `v-bind`는 렌더링 유무로 나뉨
+   > `v-` 방식으로 나타냄 `Directive 문법 따로 정리함`
 
 3. Javascript 표현식 사용 가능
 
+   > `{{ number + 1}}` / `{{ message.split('').reverse().join('') }}`
 
 
 
 
+## 스크립트 문법
+
+#### 📌모든 Vue Instance는 여러 옵션을 사용하여 새 인스턴스를 구성함 (Vue Instance == Vue Component)
+
+**ex**
+
+``` html
+<div id="app">
+    <button @click="myFuncA">a</button>
+    <button @click="myFuncB">b</button>
+</div>
+<script src="https://cdn.jsdeliver.net/npm/vue/dist/vue.js"></script>
+<script>
+	const app = new Vue({
+        el: '#app',
+        data(){
+            return({
+                a: 1,
+            })
+        },
+        methods:{
+            myFuncA(){
+                console.log(this) // Vue Instance
+            },
+            myFuncB: () => {
+                console.log(this) // window
+            }
+        }
+    })
+</script>
+```
+
+> 1. `el`: `template`에 요소와 연결(마운트)하는 DOM 엘리먼트
+> 2. `data`: 함수형으로 작성됨. `return`으로 `data`를 `object` 형태로 반환. Vue Instance 내에서 this키워드로 접근 가능
+> 3. `methods`: Vue instance에 추가하는 메서드
+> 4. `this`: JS 문법을 잘 보고 오자!
 
 
 
+## Directive (디렉티브)
+
+> #### v 접두사가 있는 특수 속성
+>
+> - 전달인자 (Arguments)
+>
+>   - `:` 을 통해서 전달인자를 받을 수 있음
+>
+>   - 전달받는 인자는 큰따옴표로 작성
+>
+>     ``` html
+>     <a v-bind:href="url">...</a>
+>     ```
+>
+>     `v-bind:href` 를 `:href` 로 줄여서 사용 가능
+>
+> - 수식어 (Modifier)
+>
+>   - `.` 으로 표시되는 접미사로 directive를 바인딩 할 때 나타냄
+
+
+
+### 1. v-html
+
+> ``` html
+> <p>{{rawHtml}}</p>
+> <p><span v-html>{{rawHtml}}></span></p>
+> ```
+>
+> `p태그` 안의 `span태그` 값은 `rawHtml`값으로 대체됨. 웹사이트의 임의의 HTML을 동적으로 렌더링 한다면 **XSS 취약점**으로 이어질 수 있으니 `v-html`은 사용을 자제하는 것이 좋다
+>
+> **XSS 취약점 (Cross Site Scripting)**
+>
+> 사용자가 보는 웹페이지를 클라이언트 측에서 스크립트를 삽입 할 수 있다. `XSS`은 심각한 경우 공격자가 사이트의 데이터를 제어할 수 있어 심각한 보안 위험요소이다.
+
+
+
+### 2. v-text
+
+> ```vue
+> <template>
+> 	<div id="app">
+>         <p v-text="msg"></p>
+>     </div>
+> </template>
+> <script>
+>     const app = new Vue({
+>         el: "#app",
+>         data(){
+> 			return{
+>                 msg: "Hello"
+>             }
+>         }
+>     })
+> </script>
+> ```
+>
+> 엘리먼트의 textContent를 template에 나타냄
+
+
+
+### 3. v-show
+
+> 
 
 
 
