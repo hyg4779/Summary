@@ -20,7 +20,7 @@
 - React
   - voca 단어장 PJT 실전형 README 진행중
 - Vue
-  - Vue 진행중
+  - Vue 완
   - Vue CLI 완
   - Vue Router 예정
   - Vuex 예정

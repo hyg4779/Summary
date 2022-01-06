@@ -57,7 +57,6 @@
 **npm**
 
 ```bash
-# latest stable
 $ npm install vue@next
 ```
 
@@ -292,7 +291,202 @@ const app = new Vue({
 
 ### 3. v-show
 
+> 조건부 렌더링
+>
+> `Fasle`일 경우에도 엘리먼트는 항상 렌더링 됨. CSS속성이 `hidden` 임.
+
+### 4. v- if / v-else / v-else-if
+
+>  조건부 렌더링
+>
+> `False`일 경우 렌더링이 되지 않음. (자주 토글하는 요소에는 렌더 비용 증가)
+
+
+
+### 5. v-for
+
+> `item in items` 구문처럼 사용. 항상 `:key` 속성을 같이 사용하도록 함
+>
+> `item`가 배열이면 `index`를 `key`로사용하여 활용할 수 있음.
+>
+> `items`가 `Object` 이면 `key`로 `:key`를 사용할 수 있음
+>
+> 💡 `v-if` 와 같이 사용할 시 `v-for`구문의 우선순위가 더 높아 무시될 수 있음. 따라서 같이 사용은 지양하자
+>
+> #### 배열의 v-for 구문
+>
+> ``` html
+> <ul id="example-2">
+>   <li v-for="(item, index) in items">
+>     {{ parentMessage }} - {{ index }} - {{ item.message }}
+>   </li>
+> </ul>
+> ```
+>
+> ``` js
+> var example2 = new Vue({
+>   el: '#example-2',
+>   data: {
+>     parentMessage: 'Parent',
+>     items: [
+>       { message: 'Foo' },
+>       { message: 'Bar' }
+>     ]
+>   }
+> })
+> ```
+>
+> 출력
+>
+> - Parent-0-Foo
+> - Parent-1-Bar
+>
 > 
+>
+> #### Object의 v-for 구문
+>
+> ``` html
+> <ul id="v-for-object" class="demo">
+>   <li v-for="(index, name, value) in object">
+>     {{ index.name: value }}
+>   </li>
+> </ul>
+> ```
+>
+> 
+>
+> ``` js
+> new Vue({
+>   el: '#v-for-object',
+>   data: {
+>     object: {
+>       title: 'How to do lists in Vue',
+>       author: 'Jane Doe',
+>       publishedAt: '2016-04-10'
+>     }
+>   }
+> })
+> ```
+>
+> 출력
+>
+> - 0.title: How to do lists in Vue
+> - 1.author: Jane Doe
+> - 2.publishedAt: 2016-04-10
+
+
+
+### 6. v-on 
+
+> 엘리먼트에 이벤트 리스너를 연결하여 사용
+>
+> shorthand: `@`
+>
+> `v-on:submit="enterTheInput"`➡`@submit="enterTheInput"`
+>
+> ``` html
+> <input type="text" />
+> <button @submit="enterTheInput">
+>     Enter
+> </button>
+> ```
+
+
+
+### 7. v-bind
+
+> Vue의 data 값을 할당
+>
+> `Object`형태로 사용하면 value가 `true`인 `key`가 `class`에 할당됨
+>
+> shorthand: `:`
+>
+> ``` html
+> <div :class="{active: todo.isTrue}">
+> </div>
+> <li :style="{ fontSize: fontSize + 'px'}"
+> ```
+
+
+
+### 8. v-model
+
+> `html` 요소값과 `data` 양방향 바인딩
+>
+> ``` html
+> <input type="text" v-model="checked" />
+> <label>{{checked}}</label>
+> ...
+> <script>
+> data(){
+> 	return{
+> 	checked: true,
+> 	}
+> }
+> </script>
+> ```
+>
+> `v-model` 뒤에 `.lazy` / `.number` / `.trim` 수식어를 붙이면 추가 기능 가능
+>
+> `lazy`: `change` 이벤트 이후에 동기화 할 수 있음
+>
+> `number`: 사용자 입력이 자동으로 숫자 형변환 일어남. 주로 `input` 태그에서 일어남
+>
+> `trim`: 입력된 값이 자동으로 `trim`됨
+
+
+
+### 9. computed
+
+> 데이터 기반 계산된 속성
+>
+> 함수의 형태로 정의하지만 반환값이 바인딩 됨 **꼭 반환값이 있어야함!!**
+>
+> #### 종속된 데이터가 변경될 때만 함수 실행
+
+
+
+### 10. watch
+
+> 데이터를 감시하고 감시하는 데이터에 변화가 일어날 때만 실행되는 함수
+>
+> **computed 는 종속된 데이터가 변하면 실행하여 반환값이 있는 선언형 프로그래밍 **
+>
+> **watch는 특정 데이터의 변화값을 보고 다른 data를 바꿀때 주로 사용 명령형 프로그래밍**
+>
+> #### 특정값이 변동하면 다른 작업을 한다. 특정 변화에 대한 트리거
+
+
+
+### 11. filters
+
+> `interpolation` 또는 `v-bind`를 이용할 때 사용가능
+>
+> JS표현식처럼 `|` 파이프를 함께 추가하여 사용 **chaining 가능**
+>
+> ``` html
+> <div>
+>     <p>{{ numbers | oddNumbers | higherTen }}</p>
+> </div>
+> ...
+> <script>
+> ...
+> filters:{
+>     oddNumbers(args){
+>         const oddNums = args.filter(function(arg){
+>             return arg%2
+>         })
+>     },
+>     higherTen(args){
+>         const highNums = args.filter(function(arg){
+>           return arg > 10  
+>         })
+>     }
+> }
+> </script>
+> ```
+
+
 
 
 
