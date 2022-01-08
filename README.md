@@ -13,9 +13,10 @@
 - python
   - python 문법 예정
   - django 예정
-- JavaScript
-  - basic 완
-  - im 제작중
+- HTML / CSS / JS
+  - HTML/CSS 제작중
+  - JS_basic 완
+  - JS_im 제작중
 - React
   - voca 단어장 PJT 실전형 README 진행중
 - Vue
@@ -27,4 +28,5 @@
   - base 완
   - im 예정
 - 알고리즘
-  - Greedy 진행중
+  - Greedy 완
+  - 구현 완
