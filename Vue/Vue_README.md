@@ -490,6 +490,38 @@ const app = new Vue({
 
 
 
+## Vue3 가 Vue2와 달라진점
+
+- Composition APi를 기본적으로 지원
+
+  > 기존 2.0에서는 Component의 옵션을 `Data` `Computed` `Methods` `Watch` 로 구분해 보다 직관적인 느낌을 줌.
+  >
+  > ➡ 컴포넌트의 크기가 커질수록 각각의 코드를 위 아래로 읽어야해 이해도와 가독성 저하
+  >
+  > 
+  >
+  > #### 📌Composition API
+  >
+  > 기존의 분산된 기능들을 `Setup`으로 묶음
+  >
+  > `Reactive` `Ref` `Methods` `Computed`
+
+- Life Cycle Hook 변화
+
+  > 이전에 `Created` `Mounted` `Updated` 메서드를 사용했음. **Composition API**로 들어가면서 명칭이 바뀜.
+  >
+  > `created` : `setup`이 실행되자마자 실행
+  >
+  > `mounted` : `onMounted`로 바뀜
+  >
+  > `updated`: `onUpdated`로 바뀜
+
+- templated 생성시 루트 엘리먼트가 2개이상 가능
+
+  > 이전에는 `template` 안에 하나의 `element`만 가능했지만 3.0.부터 2개 이상이 가능
+
+- 인터넷 익스플로러 지원 중단
+
 
 
 

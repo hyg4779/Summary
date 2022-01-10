@@ -24,6 +24,7 @@
   - Vue CLI 완
   - Vue Router 예정
   - Vuex 예정
+  - Quasar Plugin 완
 - CS
   - base 완
   - im 예정
