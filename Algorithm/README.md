@@ -343,9 +343,103 @@
    >   # 2
    >   def setting(array):
    >   	return array[1]
-   >   
+   >     
    >   result = sorted(array, key=setting)
    >   ```
 
 
 
+## 이진탐색
+
+### 💡배찾으려는 데이터와 중간점 위치에 있는 데이터를 반복해서 비교해서 탐색 (기본적으로 배열은 정렬되어있어야 함)
+
+**시간복잡도**: 원소의 개수가 절반씩 사라지므로 `O(logN)`
+
+> - 재귀함수로 구현한 소스코드
+>
+>   ``` python
+>   def binary_search(array, target, start, end):
+>       if start > end:			# 첫 시작점과 끝점이 교차 => 못찾은 것
+>           return None
+>       mid = (start + end) // 2		# 중간점 인덱스 반환
+>       
+>       if array[mid] == target:
+>           return mid
+>       elif array[mid] > target:
+>           return binary_search(array, target, start, mid-1)
+>       else:
+>           return binary_search(array, target, mid+1, end)
+>       
+>   N, target = map(int, input().split())
+>   # 배열 길이와 타겟넘버
+>   
+>   array = list(map(int, input().split()))
+>   # 배열
+>   result = binary_search(array, target, 0, N)
+>   if result == None:
+>       print(False)
+>   else:
+>       print(result)
+>   ```
+>
+>   
+>
+>   - 반복문으로 구현한 소스코드
+>
+>     ``` python
+>     def binary_search(array, target, start, end):
+>         
+>         while start <= end:
+>             mid = (start + end) // 2		# 중간점 인덱스 반환
+>             
+>             if array[mid] == target:
+>                 return mid
+>             elif array[mid] > target:
+>                 end = mid - 1
+>             else:
+>                 start = mid + 1
+>                 
+>     	return None
+>     ```
+>
+>   
+>
+>   이진탐색은 시간복잡도가 좋은만큼 대용량 데이터 처리에 자주 쓰인다. 또한 코딩테스트에도 자주 나오는 알고리즘 이기에 만약 많은 양의 정렬된 데이터에서 특정값을 찾아야한다면 이진탐색을 사용하자
+
+### 트리 자료구조
+
+> DB는 내부적으로 대용량 데이터 처리에 적합한 트리구조를 활용하여 항상 데이터가 정렬되어 있다. DB탐색은 이진탐색과 조금 다르지만, 유사한 방법을 사용도록 설계되어있다.
+>
+> #### 트리
+>
+> 트리는 그래프 구조의 일종이며, 많은 양의 데이터를 관리하는 목적으로 쓰이는 자료구조다. 노드와 노드의 연결로 이루어져있고 각 노드는 정보들을 갖고있다.
+>
+> **트리의 특징**
+>
+> 1. 트리 최상단 노드를 루트노드라고 함
+> 2. 노드는 부모와 자식 관계로 표현
+> 3. 트리에서 일부를 떼어내도 트리구조이며 서브트리라고 함
+>
+> 
+>
+> > #### 이진탐색트리
+> >
+> > ![이진탐색트리](README_사진/이진탐색트리.png)
+> >
+> > 트리 구조중 가장 간단한 형태.
+> >
+> > 부모 노드보다 왼쪽 자식 노드가 작다.
+> >
+> > 부모 노드보다 오른쪽 자식 노드가 크다.
+> >
+> > ➡ **왼쪽 자식노드 < 부모노드 < 오른쪽 자식노드**
+>
+> #### 💡 데이터 빠르게 입력받기
+>
+>  ``` python
+>  import sys
+>  # 하나의 문자열 데이터 입력받기
+>  input_data = sys.stdin.readline().rstrip()
+>  ```
+>
+> 데이터를 입력받을 때 마지막 `Enter` 를 누르면서 줄바꿈 기호가 들어가기 때문에 `rstrip`을 꼭 마지막에 사용해주자
