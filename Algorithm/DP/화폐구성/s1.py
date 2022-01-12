@@ -1,13 +1,24 @@
 import sys
 sys.stdin = open('input.txt')
 
-nums = [int(input()) for _ in range(int(input()))]
+T = int(input())
+for tc in range(T):
+    N, M = map(int,input().split())
+    # 화폐 개수, 목표 금액
 
-for i in range(len(nums)-1, -1, -1):
-    max_index = i
+    coin_list = [int(input()) for _ in range(N)]
+    # 화폐 종류 리스트
 
-    for j in range(len(nums)-1, i, -1):
-        if nums[j] > nums[max_index]:
-            nums[max_index], nums[j] = nums[j], nums[max_index]
+    d = [10001]*(M+1)
+    d[0] = 0
+    for i in range(N):
+        for j in range(coin_list[i], M+1):
+            if d[j-coin_list[i]] != 10001:
+                d[j] = min(d[j], d[j-coin_list[i]]+1)
 
-print(nums)
+    if d[M] == 10001:
+        print(-1)
+    else:
+        print(d[M])
+
+    
