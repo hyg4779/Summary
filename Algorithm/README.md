@@ -343,7 +343,7 @@
    >   # 2
    >   def setting(array):
    >   	return array[1]
-   >     
+   >       
    >   result = sorted(array, key=setting)
    >   ```
 
@@ -362,17 +362,17 @@
 >       if start > end:			# 첫 시작점과 끝점이 교차 => 못찾은 것
 >           return None
 >       mid = (start + end) // 2		# 중간점 인덱스 반환
->       
+>         
 >       if array[mid] == target:
 >           return mid
 >       elif array[mid] > target:
 >           return binary_search(array, target, start, mid-1)
 >       else:
 >           return binary_search(array, target, mid+1, end)
->       
+>         
 >   N, target = map(int, input().split())
 >   # 배열 길이와 타겟넘버
->   
+>     
 >   array = list(map(int, input().split()))
 >   # 배열
 >   result = binary_search(array, target, 0, N)
@@ -388,17 +388,17 @@
 >
 >     ``` python
 >     def binary_search(array, target, start, end):
->         
+>             
 >         while start <= end:
 >             mid = (start + end) // 2		# 중간점 인덱스 반환
->             
+>                 
 >             if array[mid] == target:
 >                 return mid
 >             elif array[mid] > target:
 >                 end = mid - 1
 >             else:
 >                 start = mid + 1
->                 
+>                     
 >     	return None
 >     ```
 >
@@ -443,3 +443,75 @@
 >  ```
 >
 > 데이터를 입력받을 때 마지막 `Enter` 를 누르면서 줄바꿈 기호가 들어가기 때문에 `rstrip`을 꼭 마지막에 사용해주자
+
+
+
+## DP 다이나믹 프로그래밍(동적 프로그래밍)
+
+### 💡 한번 계산 문제는 다시 계산하지 않는 알고리즘 ➡ 메모리 절약
+
+> 대표적인 DP ➡ **피보나치수열**
+>
+> **DP사용조건**
+>
+> 1. 큰 문제를 작은 문제로 나눌 수 있다
+> 2. 작은 문제에서 구한 정답은 그것을 포함한 큰 문제에서도 동일하다.
+>
+> #### ex 피보나치 수열 소스코드
+>
+> ``` python
+> def fibo(n):
+>     if n == 1 or n == 2:
+>         return 2
+>     return fibo(n-1) + fibo(n-2)
+> ```
+>
+> 늘어나는 재귀함수들 중에서 분명 같은 값을 계산하는 함수가 존재하기 때문에 피보나치 수열은 `n`값이 커질수록 생겨야 하는 아래 차수 항들이 기하급수적으로 늘어난다. (시간복잡도: `O(2^N)`) ➡ 메모이제이션을 활용해 한 번 구현한 값을 저장해 필요할 때 호출하면 수고를 줄일 수 있다.
+>
+> > **메모이제이션**
+> >
+> > 한 번 구현한 값을 리스트에 저장하는 것
+>
+> #### 메모이제이션을 적용한 피보나치 수열코드
+>
+> ```python
+> d = [0]*100		# 구현한 값을 저장할 메모이제이션 리스트
+> def fibo(n):
+>     if n == 1 || n == 2:
+>         return 1
+>     
+>     if d[x] != 0:		# 리스트에 있는 값이라면 바로 호출
+>         return d[x]
+>     
+>     d[x] = fibo(n-1) + fibo(n-2)
+>     return d[x]
+> ```
+>
+> 이렇게 구현하면 같은 문제도 메모리가 효울적으로 한 번씩만 사용되어 시간복잡도가 `O(N)` 이다.
+>
+> 피보나치처럼 큰 문제를 호출하기 위해 작은 문제들을 계속 호출하는 방식을 하향식 `Top down` 방식이라한다.
+>
+> 반대로 작은문제를 계속 호출해 큰 문제를 해결하는 방식은 상향식 `Bottom up` 이라한다.
+>
+> #### Bottom up 피보나치
+>
+> ``` python
+> d = [0]*100
+> d[1] = 1
+> d[2] = 1
+> for i in range(3, n+1):
+>     d[i] = d[i-1] + d[i-2]
+> print(d[n])
+> ```
+>
+> 
+>
+> 추가로 재귀함수는 깊이가 1000 이상일 시 `recursion depth`  관련 오류가 발생할 수 있다. 이런 경우
+>
+> ``` python
+> import sys
+> sys.setrecursionlimit()
+> ```
+>
+> 을 호출해 완화하여 풀 수 있다.
+
