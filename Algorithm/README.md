@@ -343,7 +343,7 @@
    >   # 2
    >   def setting(array):
    >   	return array[1]
-   >         
+   >           
    >   result = sorted(array, key=setting)
    >   ```
 
@@ -362,17 +362,17 @@
 >       if start > end:			# 첫 시작점과 끝점이 교차 => 못찾은 것
 >           return None
 >       mid = (start + end) // 2		# 중간점 인덱스 반환
->           
+>             
 >       if array[mid] == target:
 >           return mid
 >       elif array[mid] > target:
 >           return binary_search(array, target, start, mid-1)
 >       else:
 >           return binary_search(array, target, mid+1, end)
->           
+>             
 >   N, target = map(int, input().split())
 >   # 배열 길이와 타겟넘버
->       
+>         
 >   array = list(map(int, input().split()))
 >   # 배열
 >   result = binary_search(array, target, 0, N)
@@ -388,17 +388,17 @@
 >
 >     ``` python
 >     def binary_search(array, target, start, end):
->                 
+>                     
 >         while start <= end:
 >             mid = (start + end) // 2		# 중간점 인덱스 반환
->                     
+>                         
 >             if array[mid] == target:
 >                 return mid
 >             elif array[mid] > target:
 >                 end = mid - 1
 >             else:
 >                 start = mid + 1
->                         
+>                             
 >     	return None
 >     ```
 >
@@ -586,7 +586,7 @@
 > >     visited[start] = True       # 시작노드 방문처리
 > >     for j in graph[start]:      # 시작노드가 연결된 곳들의 정보 j[0]: 연결노드 번호 j[1]: 비용
 > >         distance[j[0]] = j[1]   # 연결된 노드의 거리 갱신
-> >     
+> > 
 > >     for i in range(N-1):
 > >         now = smallest_cost()   		   # =방문하지 않은 곳 중 제일 적은 비용 드는노드 번호
 > >         visited[now] = True     		   # 방문처리
@@ -689,3 +689,11 @@
 > > #### 시간복잡도 계산
 > >
 > > 삽입의 경우 힙은 `logN`이 걸리고 E개의 간선을 모두 넣으니 `ElogE` 가 된다 이때 중복간선은 포함하지 않으니 E는 항상 V^2 보다 작다. 왜냐면 모든 노드끼리 서로 다 연결되어 있다고 할 때 간선의 개수를 약 V^2개로 볼 수 있다. 따라서 `logE`는 `logV^2`보다 작기에 이때 `O(logE)`는 `Olog(V^2)`가 되고 `O(2logV)` 가 되어 최종적으로 간단히 `O(ElogV)` 로 나타낼 수 있다. 
+>
+> 
+>
+> > ### 플루이드 워셜
+> >
+> > #### 모든 지점에서 모든 다른 지점 까지의 최단경로를 구하는 알고리즘
+> >
+> > 
