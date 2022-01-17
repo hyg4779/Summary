@@ -22,12 +22,12 @@
 - Vue
   - Vue 완
   - Vue CLI 완
-  - Vue Router 예정
+  - Vue Router 완 (2.x 버전)
   - Vuex 예정
   - Quasar Plugin 완
 - CS
   - base 완
-  - 이산수학 진행중
+  - 이산수학 basic 완
   - 컴퓨터구조 예정
   - 운영체제 예정
   - 네트워크 예정
