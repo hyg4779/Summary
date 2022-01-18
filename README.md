@@ -11,7 +11,7 @@
 ## 현재 올라와 있는 README
 
 - python
-  - python 문법 예정
+  - python 예정
   - django 예정
 - HTML / CSS / JS
   - HTML/CSS 제작중
@@ -21,9 +21,9 @@
   - voca 단어장 PJT 실전형 README 진행중
 - Vue
   - Vue 완
-  - Vue CLI 완
-  - Vue Router 완 (2.x 버전)
-  - Vuex 예정
+  - Vue3 완
+  - Vue Router 완
+  - Vuex & props and emit 예정
   - Quasar Plugin 완
 - CS
   - base 완

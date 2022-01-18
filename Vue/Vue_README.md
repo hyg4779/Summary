@@ -14,7 +14,7 @@
 
 # Vue
 
-![Vue_logo](Vue_READMD_사진/Vue_logo.png)
+![Vue_logo](Vue_README_사진/Vue_logo.png)
 
 - ### 💡 컴포넌트 기반의 SPA를 구축할 수 있게 해주는 프레임워크
 
@@ -126,7 +126,7 @@ const app = new Vue({
 
 ## Vue LifeCycle Hook
 
-![Vue_LifeCycle_Hook](Vue_READMD_사진/Vue_LifeCycle_Hook.PNG)
+![Vue_LifeCycle_Hook](Vue_README_사진/Vue_LifeCycle_Hook.PNG)
 
 1. `beforeCreate`(코드옵션 추가 직전)
 2. `created`(computed, watch, method등을 코드옵션 완료)
