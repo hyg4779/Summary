@@ -343,7 +343,7 @@
    >   # 2
    >   def setting(array):
    >   	return array[1]
-   >           
+   >             
    >   result = sorted(array, key=setting)
    >   ```
 
@@ -362,17 +362,17 @@
 >       if start > end:			# 첫 시작점과 끝점이 교차 => 못찾은 것
 >           return None
 >       mid = (start + end) // 2		# 중간점 인덱스 반환
->             
+>               
 >       if array[mid] == target:
 >           return mid
 >       elif array[mid] > target:
 >           return binary_search(array, target, start, mid-1)
 >       else:
 >           return binary_search(array, target, mid+1, end)
->             
+>               
 >   N, target = map(int, input().split())
 >   # 배열 길이와 타겟넘버
->         
+>           
 >   array = list(map(int, input().split()))
 >   # 배열
 >   result = binary_search(array, target, 0, N)
@@ -388,17 +388,17 @@
 >
 >     ``` python
 >     def binary_search(array, target, start, end):
->                     
+>                         
 >         while start <= end:
 >             mid = (start + end) // 2		# 중간점 인덱스 반환
->                         
+>                             
 >             if array[mid] == target:
 >                 return mid
 >             elif array[mid] > target:
 >                 end = mid - 1
 >             else:
 >                 start = mid + 1
->                             
+>                                 
 >     	return None
 >     ```
 >
@@ -696,4 +696,46 @@
 > >
 > > #### 모든 지점에서 모든 다른 지점 까지의 최단경로를 구하는 알고리즘
 > >
-> > 
+> > 다익스트라와 다른점
+> >
+> > - 다익스트라는 한 지점에서 모든 지점으로 가는 최단 경로
+> > - 플루이드 워셜은 방문여부를 따지지 않음
+> > - 플루이드 워셜은 N개의 노드를 N번에 맞게 단계를 반복하고 점화식에 맞게 2차원 리스트를 개선하기 때문에 DP
+> >
+> > 노드의 개수가 N개일 때, N번의 단계를 수행해 하나의 노드당 `O(N^2)` 연산이 이뤄지고 결과적으로 시간복잡도는 **O(N^2)**
+> >
+> >  ``` python
+> >  INF = int(1e9)
+> >  
+> >  # n, m = 노드개수, 간선개수
+> >  n = int(input())
+> >  m = int(input())
+> >  
+> >  # 인덱스 값을 쉽게 생각하기 위해 n+1 x n+1 배열, 모든 값 무한으로초기화
+> >  matrix = [[INF] * (n+1) for _ in range(n+1)]
+> >  
+> >  # 자기 자신으로는 0으로 치환
+> >  for i in range(1, n+1):
+> >      matrix[i][i] = 0
+> >  
+> >  # 간선 정보 그래프에 입력
+> >  for _ in range(m):
+> >      a, b, c = map(int, input().split())
+> >      matrix[a][b] = c
+> >  
+> >  # 점화식에 따라 플루이드 워셜 알고리즘 수행
+> >  for k in range(1, n+1):
+> >      for i in range(1, n+1):
+> >          for j in range(1, n+1):
+> >              matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j])
+> >  
+> >  # 결과 출력
+> >  for r in range(1, n+1):
+> >      for c in range(1, n+1):
+> >          if matrix[r][c] == INF:
+> >              print('INFINITY', end=' ')
+> >          else:
+> >              print(matrix[r][c], end=' ')
+> >      print()
+> >  ```
+
