@@ -134,7 +134,7 @@ const user = {
     [a]: 30,
     ["인"+"사"]: "안녕"
 }
-console.log(user) // {name; "Mike", age: 30, "인사": "안녕"}
+console.log(user) // {name: "Mike", 'age': 30, "인사": "안녕"}
 
 ```
 
@@ -182,7 +182,7 @@ console.log(user) // {name; "Mike", age: 30, "인사": "안녕"}
    > // {name: "Mike", age: 30, gender: 'male'}
    > ```
 
-2. Object.keys(): 키배열 반환 / Object.values(): 값 배열 반환 / Object.entries(): 각 키와 값 한 쌍씩 배열로 묶은 큰배열 반환
+2. Object.keys(): 키배열 반환 / Object.values(): 값 배열 (숫자형 불리언도 문자형으로)반환 / Object.entries(): 각 키와 값 한 쌍씩 배열로 묶은 큰배열 반환
 
    > ``` js
    > const user = {name: "Mike", age: 30, gender: 'male'}
@@ -199,7 +199,100 @@ console.log(user) // {name; "Mike", age: 30, "인사": "안녕"}
    > const reverseArr = Object.fromEntries(arr)	// {name: "Mike", age: 30, gender: 'male'}
    > ```
 
-   
+
+
+
+## 심볼 Symbol
+
+``` js
+const a  = Symbol();
+```
+
+### 💡 유일한 식별자를 만듦! 
+
+``` js
+const id = Symbol('id');	// new 안붙임
+const id2 = Symbol('id');
+
+console.log(id) // Symbol(id)
+console.log(id2) // Symbol(id)
+console.log(id === id2) // false
+```
+
+> - 유일성 보장
+> - 전체 코드중에 딱 하나
+> - 같은 설명으로 만들어도 동등연산시 false
+
+#### property key: 심볼형
+
+``` js
+const id = Symbol('id')
+const user = {
+    name: "Mike",
+    age: 30,
+    [id]: "myid"
+}
+
+// user
+// {name: "Mike", age: 30, Symbol(id): "myid"}
+// user[id] = "myid"
+
+//Object.keys(user)		["name", "age"]
+//Object.values(user)	 ["Mike", 30]
+//Object.entires(user)		[Array(2), Array(2)]
+```
+
+> `Object` 메서드를 사용하면 `key`가 `Symbol`형인 `property`는 건너뜀
+
+#### 어디서 사용하나
+
+➡ 특정객체에 원본을 건드리지 않고, 속성을 추가할 수 있음.
+
+코드가 길어질수록 원본객체 또는 상단 코드에 내가 만든 식별자와 같은 네이밍을 한 식별자가 있을 수 있음. 이럴 때 `Symbol`객체를 사용하여 오류를 피할 수 있음
+
+
+
+**Symbol.for(식별자이름): 전역심볼**
+
+> - 하나의 식별만 보장받을 수 있음
+> - 없으면 만들고, 있으면 가져오기 때문
+> - `Symbol`함수는 매번 다른 `Symbol`값을 생성하지만,
+> - `Symbol.for` 메서드는 하나를 생성한 뒤 키를 통해 같은 `Symbol`을 공유 
+>
+> ``` js
+> const id = Symbol.for('id');
+> const id2 = Symbol.for('id'); 
+> 
+> id === id2		// true
+> Symbol.keyFor(id2)		// "id"
+> ```
+>
+> ketFor(변수)를 사용하여 생성할 때 만들었던 이름을 얻을 수도 있음
+>
+> 전역심볼이 아닌 심볼은 keyfor를 사용할 수 없음
+>
+> ➡ `심볼이름.decription`
+>
+> ``` js
+> const id = Symbol('id입니다')
+> id.description;		// "id입니다"
+> ```
+
+
+
+#### 객체에 숨겨진 Symbol key 보는 방법
+
+``` js
+const id = Symbol('id')
+const user = {
+    name: "Mike",
+    age: 30,
+    [id]: "myid"
+}
+
+Object.getOwnPropertySymbols(user);		// [Symbol(id)] 심볼들만 보는 메서드
+Reflect.ownKeys(user);		//	["name", "age", Symbol(id)]	심볼을 포함한 객체의 모든 키를 보여줌
+```
 
 
 

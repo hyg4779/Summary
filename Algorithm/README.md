@@ -343,7 +343,7 @@
    >   # 2
    >   def setting(array):
    >   	return array[1]
-   >             
+   >               
    >   result = sorted(array, key=setting)
    >   ```
 
@@ -362,17 +362,17 @@
 >       if start > end:			# 첫 시작점과 끝점이 교차 => 못찾은 것
 >           return None
 >       mid = (start + end) // 2		# 중간점 인덱스 반환
->               
+>                 
 >       if array[mid] == target:
 >           return mid
 >       elif array[mid] > target:
 >           return binary_search(array, target, start, mid-1)
 >       else:
 >           return binary_search(array, target, mid+1, end)
->               
+>                 
 >   N, target = map(int, input().split())
 >   # 배열 길이와 타겟넘버
->           
+>             
 >   array = list(map(int, input().split()))
 >   # 배열
 >   result = binary_search(array, target, 0, N)
@@ -388,17 +388,17 @@
 >
 >     ``` python
 >     def binary_search(array, target, start, end):
->                         
+>                             
 >         while start <= end:
 >             mid = (start + end) // 2		# 중간점 인덱스 반환
->                             
+>                                 
 >             if array[mid] == target:
 >                 return mid
 >             elif array[mid] > target:
 >                 end = mid - 1
 >             else:
 >                 start = mid + 1
->                                 
+>                                     
 >     	return None
 >     ```
 >
@@ -521,7 +521,7 @@
 
 ### 💡 == 길찾기문제
 
-> 다양한 종류가 많고, 상황에맞는 알고리즘들이 이미 많이 정리되어있다.**다익스트라, 플로이드 워셜, 밸만포드**
+> 다양한 종류가 많고, 상황에맞는 알고리즘들이 이미 많이 정리되어있다.**다익스트라, 플로이드 워셜, 밸만포드 ...**
 >
 > > ### 다익스트라
 > >

@@ -22,8 +22,8 @@
 - Vue
   - Vue 완
   - Vue3 완
-  - Vue Router 완
-  - Vuex & props and emit 예정
+  - Vue Router 수정필요
+  - Vuex & 데이터전송 예정
   - Quasar Plugin 완
 - CS
   - base 완
@@ -38,4 +38,4 @@
   - 정렬 완
   - 이진탐색 완
   - DP 완 (복습필요)
-  - 최단경로
+  - 최단경로 완
