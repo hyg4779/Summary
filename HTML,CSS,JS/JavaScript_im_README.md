@@ -627,9 +627,240 @@ String.fromCodePoint(97)	// "a"
 
 
 
+## 배열 메서드
+
+### 1. arr.splice(n, m): n부터 m까지 지움
+
+``` js
+let arr = [0,1,2,3,4,5]
+
+arr.splice(1,2)
+console.log(arr)	// [0,3,4,5]
+
+//arr.splice(n, m, [x1, x2, ...): n부터 m까지 지우고 그 자리에 x1, x2 ... 추가
+
+let arr = ["나는", "Mike", "입니다"]
+arr.splice(1,1,"홍길동")
+console.log(arr)	//["나는", "홍길동", "입니다"]
+
+arr.splice(1,0,"의적")
+console.log(arr)	//["나는", "의적", "홍길동", "입니다"]
+
+// splice는 삭제요소를 반환함
+
+let arr = [1,2,3,4,5]
+let result = arr.splice(1,2)
+
+console.log(arr)	// [1,4,5]
+console.log(result)	// [2,3]
+```
 
 
 
+### 2. arr.slice(n, m): n부터 m-1까지 반환
+
+``` js
+let arr = [1,2,3,4,5]
+arr.slice(1,4)	// [2,3,4]
+
+let arr2 = arr.slice()	// 인자를 넣지 않으면 모든요소 반환
+console.log(arr2)	// [1,2,3,4,5]
+```
+
+
+
+### 3. arr.concat(arr2, arr3 ...): 인자로 받은 배열또는 요소들을 합쳐서 새 배열 반환
+
+``` js
+let arr = [1,2]
+
+arr.concat([3,4])	// [1,2,3,4]
+arr.concat([3,4], [5,6])	// [1,2,3,4,5,6]
+
+arr.concat([3,4], 5, 6)		// [1,2,3,4,5,6]
+// 연속된 배열을 받거나, 인자 하나씩 받아도 모두 하나의 배열로 이어져서 반환
+```
+
+
+
+### 4. arr.forEach(fn): 배열 반복
+
+함수를 인자로 받아서 반복문을 돌림
+
+여기서 함수는 3가지를 인자로 받는데, 순서대로 value, index, 배열이름을 뜻하고 보통 앞에 두가지만 작성함.
+
+``` js
+user = ["Mike", "Tom", "James"]
+
+arr.forEach((name, index, user)=>{
+    console.log(`${index+1}번. {name}님`)
+})
+// 1번 Mike님
+// 2번 Tom님
+// 3번 James님
+```
+
+
+
+
+
+### 5. arr.indexOf / arr.lastIndexOf
+
+해당 인덱스의 위치를 반환함
+
+``` js
+let arr = [1,2,3,4,5.1,2,3]
+
+arr.indexOf(3)	// 2
+// 인자를 두개 받는경우: 첫번째 인자-찾는값, 두번째 인자-시작위치
+arr.indexOf(3,3)	// 7
+
+//lastIndexOf: 끝에서 부터 탐색.
+arr.lastIndexOf(3)	// 7
+```
+
+
+
+
+
+### 6. arr.includes(): 포함하고 있는지 여부 true, false반환
+
+``` js
+let arr = [1,2,3,4,5]
+
+arr.includes(4) // true
+arr.includes(9)	// false
+```
+
+
+
+
+
+### 7. arr.find(fn) / arr.findIndex(fn)
+
+첫번째 `true`값만 반환하고 종료.
+
+만약 없으면 `undefined`를 반환
+
+``` js
+let items = [1,2,3,4,5,6]
+
+const result = items.find((item) => {
+    return item%2 === 0;
+})
+
+console.log(2)	// 4는 반환하지 않고 2에서 멈추고 종료
+
+let users = [
+    {name: "MIke", age: 30},
+    {name: "Tom", age: 19},
+    {name:"James", age:23},
+]
+
+const kid = user.findIndex((user) =>{
+    if (user.age < 19){
+        return true
+    }
+    return false
+})
+
+console.log(kid) // {name: "Tom", age: 19}
+```
+
+
+
+
+
+### 8. arr.filter(fn): 만족하는 모든 요소를 배열로 반환
+
+``` js
+let items = [1,2,3,4,5,6]
+
+const result = items.filter((item) => {
+    return item%2 === 0;
+})
+console.log(result) 	// [2, 4, 6]
+```
+
+
+
+
+
+### 9. arr.reverse(): 역순으로 재정렬. 주로 최신순으로 정렬할 때 자주 사용
+
+``` js
+let arr = [1,2,3,4,5,6]
+arr.reverse() // [6,5,4,3,2,1]
+```
+
+
+
+
+
+### 10. arr.map(fn): 함수를 받아 특정 기능을 시행하고 새로운 배열을 반환
+
+``` js
+let users = [
+    {name: "MIke", age: 30},
+    {name: "Tom", age: 19},
+    {name:"James", age:10},
+]
+
+let newUsers = users.map((user, index) => {
+    return Object.assign({}, user, {
+        id: index + 1
+        isAdult: user.age > 19
+    })
+})
+
+console.log(newUsers)
+[
+    {name: "MIke", age: 30, id: 1, isAdult: true},
+    {name: "Tom", age: 19, id: 2, isAdult: false},
+    {name:"James", age:10, id: 3, isAdult: false},
+]
+```
+
+
+
+
+
+### 11. join(구분기호(기본값: 쉼표): 배열의 요소를 구분기호로합쳐 문자열로 반환
+
+### 12. split(구분기호): 배열의 요소를 구분기호를 기준으로 나눠서 배열로 반환
+
+``` js
+let text = ["Hello", "world", "!"]
+
+const word = text.join("-")
+console.log(word)	// "Hello-wordl-!"
+
+const result = word.split("-")
+console.log(result) // ["Hello", "world", "!"]
+```
+
+
+
+
+
+### 13.  Array.isArray(): 배열인지 아닌지 확인. true, false값 반환
+
+#### `typeof`는 Array, Object 모두Object로 반환함
+
+```js
+let user = {
+    name: "Mike",
+    age: 30,
+}
+
+let userList = ["Mike", "Tom", "Jane"]
+
+console.log(typeof user)	// Object
+console.log(typeof userList) // Object
+
+console.log(Array.isArray(user))	// false
+console.log(Array.isArray(userList))	// true
+```
 
 
 
