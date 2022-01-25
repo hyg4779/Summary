@@ -164,3 +164,223 @@ p{font-family: Arial;}
 >  ![상속](CSS/상속.PNG)
 >
 > 
+
+
+
+## 색상
+
+### 1. color: 요소 내부에 있는 텍스트 색상을 지정하는 프로퍼티
+
+#### 색상지정 방법 3가지
+
+- RGB값: rgb(n,m,k) 방식으로 n,m,k 값을 지정해서 넣어줌
+
+- 헥사코드: 빨강 초록 파랑색의  양을 헥사코드로 표현
+
+- 색상명: 147 가지 존재
+
+  ``` css
+  /* 예시 RGB, 헥사코드, 색상명 */
+  h3 { color: rgb(00,100,90);}
+  h3 { color: #ee3e80;}
+  h3 { color: blue;}
+  ```
+
+
+
+### 2. background-color: 요소 내부의 바탕색 지정
+
+>  색상지정방법은 `color`와 동일하다
+
+### 3. 투명도 opacity 와 rgba
+
+1. opacity: 요소의 투명도를 설정할 수 있는 속성으로 값은 퍼센트로 따지며, 0부터 1까지 지정할 수 있음 (ex. 0.5 === 50%)
+
+2. rgba: 색상지정 rgb 방법의 마지막 값을 하나 추가한 방식으로, opacity 처럼 퍼센트로 따짐
+
+   ``` css
+   /*예시*/
+   p {
+       background-color: rgb(0, 0, 0);
+       opacuty: 0.5;
+   }
+   div{
+       backgound-color: rgba(0, 0, 0, 0.5);
+   }
+   ```
+
+
+
+### 4. HSL색상
+
+#### 📌 색상지정 4번 째 방법으로 색조, 채도, 밝기(, 투명도) 선택가능
+
+1. `hsl`: `rgb`와 비슷한 방식으로 사용함. **h: 색조(hue), s: 채도(saturation), l: 밝기(lightness)**
+
+2. `hsla`: `rgba`와 같은 맥락
+
+   ``` css
+   /*예시*/
+   p {
+       background-color: rgb(0, 0, 0);
+       background-color: hsl(0, 0, 78%);
+   }
+   div{
+       background-color: rgba(0, 0, 0, 0.5);
+       background-color: hsla(0, 100%, 100%, 0.5);
+   }
+   ```
+
+   
+
+## 텍스트
+
+1.  `font-family`: 사용할 서체 이름
+
+2. `font-size`: 픽셀, 퍼센트, em으로 지정 (1em은 하나의 m문자의 너비 기준)
+
+   픽셀 퍼센트 em 비교
+
+|    픽셀    | 퍼센트 |   em   |
+| :--------: | :----: | :----: |
+|  h1: 24px  |  200%  | 1.5em  |
+|  h2: 18px  |  150%  | 1.3em  |
+|  h3: 14px  |  117%  | 1.17em |
+| body: 12px |  75%   |  100%  |
+
+3. `@font-face`: 다양한 폰트 선택할 수 있는 프로퍼티
+
+   > 브라우저 사용자의 PC에 폰트가 설치돼있지 않아도, 이 속성을 사용해 내려받아 사용가능하다.
+   >
+   > 중요한건 이 방식을 허용하는지 폰트에 대한 라이선스를 확인해야한다.
+   >
+   > **폰트포멧?**
+
+   ``` css
+   @font-face{
+       font-family: 'HongGilDong';	/*다운받아온 서체 이름 지정*/
+       src: url('~~~');	/*다운받아온 출처*/    
+   }
+   
+   h1, h2 {
+       font-family: 'HongGilDong'
+   }
+   ```
+
+4. `font-weight`: 굵은 글꼴. normal, bold
+
+5. `font-style`: 기울임꼴.
+
+   > - normal
+   > - italic: 이탤릭체
+   > -  olique:단순 기울임꼴
+
+6. `text-transform`: 대문자 소문자 변경
+
+   > - uppercase: 모두 대문자
+   > - lowercase: 모두 소문자
+   > - capitalize: 단어 첫 글자 대문자
+
+7. `text-decoration`: 밑줄, 취소선
+
+   > - none: 적용된 효과 해제
+   > - underline: 밑줄 추가
+   > - overline: 윗줄 추가
+   > - line-through: 가운데에 줄
+   > - blink: 텍스트 깜빡임
+
+8. `line-height`: 텍스트 간의 새로간격을 띄워 가독성을 높히는 프로퍼티.  px, %,em으로 조절
+
+9. `word-spacing`, `letter-spacing`: 자간.  px, %,em으로 조절
+
+10. `text-align`: 텍스트 정렬
+
+    > - left
+    > - right
+    > - center
+    > - justify: 단락에서 마지막줄을 제외하고 양쪽으로 정렬
+
+11. `text-vertical`: 세로정렬.테이블에서만! 사용할 수 있는 요소(<th>, <td>). px, %,em으로 조절
+
+    > - baseline
+    > - sub
+    > - super
+    > - top
+    > - text-top
+    > - middel
+    > - bottom
+    > - text-bottom
+
+12. `text-indent`: 들여쓰기. px, em으로 조절
+
+13. `text-shadow`: 그림자효과 
+
+    > text-shadow: 1px 1px 0px #000000;
+    >
+    > ➡ 첫번째 값부터 가로길이, 세로길이, 번짐효과(선택적), 그림자 색상을 뜻함
+    >
+    > ``` css
+    > /*예시*/
+    > p .one{
+    >     background-color: #eeeeee;
+    >     color: #666666;
+    >     text-shadow: 1px 1px 0px #000000;
+    > }
+    > ```
+
+14. `:forst-letter`, `:first-line`: 요소 내 첫번째 문자 또는 줄. 기술적으로 **유사요소** 라고 부름
+
+    > ``` css
+    > /*예시*/
+    > p.intro:first-letter{
+    >     font-size:200%;
+    > }
+    > 
+    > p.intro:first-line{
+    >     font-weight:blod;
+    > }
+    > ```
+
+15. `:link`, `:visited`: 링크에 대한 스타일. 방문 전 링크와 방문한 링크
+
+    ``` css
+    /*예시*/
+    a:link{
+        color: deeppink;
+        text-decoration: none;
+    }
+    
+    a:visited{
+        color: black;
+        text-dacoration: underline;
+    }
+    ```
+
+16. `:hover`, `:actice`, `:focus`':사용자에대한 반응
+
+    > `hover`: 마우스가 요소위에 올라갔을 때
+    >
+    > `active`: 요소를 실행할 때
+    >
+    > `focus`: 요소에 포커스 잡혔을 때
+    >
+    > ``` css
+    > /*예시*/
+    > input{
+    >     padding: 6px, 12px, 6px, 12px;
+    >     border: 1px solid #665544;
+    >     color: #ffffff;
+    > }
+    > 
+    > input.submit:hover{
+    >     background-color: #665544;
+    > }
+    > input.submit:active{
+    >     background-color: chocolate;
+    > }
+    > input.text:focus{
+    >     color: #665544;
+    > }
+    > ```
+    >
+    > 
