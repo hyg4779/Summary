@@ -13,10 +13,13 @@
 - python
   - python 예정
   - django 예정
-- HTML / CSS / JS
-  - HTML/CSS 제작중
+- Web
+  - HTML Tag예정
+  - CSS 진행중
   - JS_basic 완
   - JS_im 제작중
+  - WebRTC 이론 완
+  - 정규표현식 완
 - React
   - voca 단어장 PJT 실전형 README 진행중
 - Vue
