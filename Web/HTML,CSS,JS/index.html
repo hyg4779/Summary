@@ -7,21 +7,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="page">
-    <h1>상속</h1>
-    <p>가능!!</p>
-  </div>
+  <h1>초판 경매</h1>
+  <table>
+    <tr>
+      <th>저자(Author)</th>
+      <th>제목(title)</th>
+      <th class="money">최저 경쟁 가격</th>
+      <th class="money">현재 경매 가격</th>
+    </tr>
+    <tr>
+      <td>E.E Cummings</td>
+      <td>Tulips & Chomneys</td>
+      <td class="money">$2,000.00</td>
+      <td class="money">$2,642.50</td>      
+    </tr>
+    <tr class="even">
+      <td>Charles d'Orleans</td>
+      <td>Poems</td>
+      <td class="money"></td>
+      <td class="money">$5,866.00</td>
+    </tr>
+    <tr>
+      <td>T.S Eliots</td>
+      <td>Poems 1909 - 1925</td>
+      <td class="money">$1,250.00</td>
+      <td class="money">$8,499.35</td>
+    </tr>
+    <tr class="even">
+      <td>Sylvia Plath</td>
+      <td>The Colossus</td>
+      <td class="money"></td>
+      <td class="money">$1031.72</td>
+    </tr>
+  </table>
 </body>
 <style>
   body{
     font-family: Arial, Verdana, sans-serif;
-    color: #665544;
-    padding: 10px
+    color: #111111;
   }
-  .page{
-    border: 1px solid #665544;
+
+  table{
+    width: 600px;
+  }
+
+  th, td{
+    padding: 7px 10px 10px 10px;
+  }
+
+  th{
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 90%;
+    border-bottom: 2px solid #111111;
+    border-top: 1px solid #111111;
+    text-align: left;
+  }
+
+  tr.even{
     background-color: #efefef;
-    padding: inherit;
+  }
+
+  tr:hover{
+    background-color: #c3e6e5;
+  }
+
+  .money{
+    text-align: right;
   }
 </style>
 </html>

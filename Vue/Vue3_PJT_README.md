@@ -1,2 +1,0 @@
-# Vuex & props and emit
-
