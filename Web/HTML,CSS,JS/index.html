@@ -8,38 +8,21 @@
 </head>
 <body>
   <h1>초판 경매</h1>
-  <table>
-    <tr>
-      <th>저자(Author)</th>
-      <th>제목(title)</th>
-      <th class="money">최저 경쟁 가격</th>
-      <th class="money">현재 경매 가격</th>
-    </tr>
-    <tr>
-      <td>E.E Cummings</td>
-      <td>Tulips & Chomneys</td>
-      <td class="money">$2,000.00</td>
-      <td class="money">$2,642.50</td>      
-    </tr>
-    <tr class="even">
-      <td>Charles d'Orleans</td>
-      <td>Poems</td>
-      <td class="money"></td>
-      <td class="money">$5,866.00</td>
-    </tr>
-    <tr>
-      <td>T.S Eliots</td>
-      <td>Poems 1909 - 1925</td>
-      <td class="money">$1,250.00</td>
-      <td class="money">$8,499.35</td>
-    </tr>
-    <tr class="even">
-      <td>Sylvia Plath</td>
-      <td>The Colossus</td>
-      <td class="money"></td>
-      <td class="money">$1031.72</td>
-    </tr>
-  </table>
+  
+  <p>
+    <h5 class="one">첫번째 문단</h5>
+    <br>
+    <h5 class="two">두번째 문단</h5>
+    <br>
+    <h5 class="three">세번째 문단</h5>
+  </p>
+  <div id="bycycle">
+    <p>자전거</p>
+    <blockquote>
+      Life is like riding a bycycle bucause...
+    </blockquote>
+  </div>
+  <button class="top_btn">Top</button>
 </body>
 <style>
   body{
@@ -75,5 +58,30 @@
   .money{
     text-align: right;
   }
+
+  .two{
+    position: relative;
+    top: 10px;
+    left: 100px;
+  }
+  .top_btn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+h1{
+    position: absolute;
+    background-color: #efefef;
+    top: 0px;
+    left: 500px;
+    width: 250px;
+}
+#bycycle{
+  float: right;
+  width: 250px;
+  font-size: 130%;
+  background-color: #efefef;
+  border: 1px dashed #000000;
+}
 </style>
 </html>
