@@ -22,11 +22,11 @@
   - 정규표현식 완
 - React
   - voca 단어장 PJT 실전형 README 진행중
-- Vue
+- Vue 완
   - Vue 완
   - Vue3 완
-  - Vue Router 수정필요
-  - Vuex & 데이터전송 예정
+  - Vue Router 완
+  - Vuex & 데이터전송 완
   - Quasar Plugin 완
 - CS
   - base 완
@@ -44,3 +44,7 @@
   - DP 완 (복습필요)
   - 최단경로 완
   - 그래프경로
+- 배포
+  - 도커 예정
+  - 우분투 예정
+  - AWS 예정
